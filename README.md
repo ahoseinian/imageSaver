@@ -16,7 +16,7 @@ this small class is built for
 Resizing
 --------
 
-- By width     resize(xxx,'auto')
+- By width    resize(xxx,'auto')
 - By height	  resize('auto',xxx)
 - By both	  resize(xxx,xxx)
 
