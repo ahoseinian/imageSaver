@@ -9,16 +9,16 @@ Introduction
 
 this small class is built for 
 
--saving post images from html form in file system
--resizing images before saving them
+- saving post images from html form in file system
+- resizing images before saving them
 
 
 Resizing
 --------
 
--By width     resize(xxx,'auto')
--By height	  resize('auto',xxx)
--By both	  resize(xxx,xxx)
+- By width     resize(xxx,'auto')
+- By height	  resize('auto',xxx)
+- By both	  resize(xxx,xxx)
 
 Usage
 -----
