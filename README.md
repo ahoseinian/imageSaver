@@ -22,7 +22,8 @@ Resizing
 
 Usage
 -----
-<?php
+
+	<?php
 
 	define('APPLICATION_PATH', __DIR__);
 
@@ -33,4 +34,3 @@ Usage
 		$imageSaver->setImage($_FILES['image'])->setName('test')->setPath("\images\\")->resize('auto',300)->save();
 	}
 
-?>
