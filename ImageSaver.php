@@ -1,10 +1,8 @@
 <?php 
-namespace Application\Lib\Image;
-
 /**
 *Example usage
 *		$imageMaker = New ImageMaker();
-*		$imageMaker->setImage($FILE['image'])->setName('sample name')->setPath("\data\images\brand\\")->resize(270,'auto')->save();             
+*		$imageMaker->setImage($_FILES['image'])->setName('sample name')->setPath("\data\images\brand\\")->resize(270,'auto')->save();             
 */
 class ImageSaver{
 
@@ -13,12 +11,17 @@ class ImageSaver{
 	protected $name;
 	protected $path;
 	protected $imageResized;
+	public $allowFileTypes = array("jpg","jpeg","gif","png");
 
 	/**
 	*@param array $image posted file like $FILE['image']
 	*/
 	public function setImage($image){
 		$this->image = $image;
+		
+		if(!in_array($this->getExtension() , $this->allowFileTypes)) //check if file is an image
+			throw new \Exception("FileTypeNotSupported", 1);
+			
 		return $this;
 	}
 
@@ -36,7 +39,12 @@ class ImageSaver{
 	* 	with somting like || c:\wamp\www\sample\public
 	*/
 	public function setPath($path){
-		$this->path = APPLICATION_PATH.$path;
+
+		if(APPLICATION_PATH)
+			$this->path = APPLICATION_PATH.$path;
+		else
+			$this->path = $path;
+
 		return $this;
 	}
 
@@ -45,7 +53,7 @@ class ImageSaver{
 	*/
 	public function getExtension(){
 	    $info = pathinfo($this->image['name']);
-		$ext = $info['extension']; // get the extension of the file
+		$ext = strtolower($info['extension']); // get the extension of the file
 		return $ext;
 	}
 
@@ -61,6 +69,10 @@ class ImageSaver{
 
 			case 'png':
 				return imagecreatefrompng($this->image['tmp_name']);
+				break;
+			
+			case 'gif':
+				return imagecreatefromgif($this->image['tmp_name']);
 				break;
 			
 			default:
