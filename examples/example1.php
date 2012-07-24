@@ -16,7 +16,8 @@
 </head>
 <body>
 	<form method="post" action="" enctype="multipart/form-data">
-		Accepted file types is ( <?php foreach($imageSaver->allowFileTypes as $type) echo $type." ";?>)
+		Accepted file types is 
+		( <?php foreach($imageSaver->allowFileTypes as $type) echo $type." ";?>)
 		u can add other types in $imageSaver->allowFileTypes property
 		<div>
 			<lable>image file:<input name="image" type="file"></lable>
