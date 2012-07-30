@@ -1,7 +1,7 @@
 ImageSaver
 ==========
 
-	version 0.0.1  Created by Amir Hoseinian
+	version 0.0.1  Created by [Amir Hoseinian](https://www.amirhoseinian.com)
 
 
 Introduction
